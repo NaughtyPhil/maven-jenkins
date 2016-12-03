@@ -1,9 +1,10 @@
 package com.xyz;
 
 public class HelloJenkinsfile {
-	
+
 	public String go(){
-		return "HelloJenkinsfile";
+		string hello = "HelloJenkinsfile";
+		return hello;
 	}
 
 }
