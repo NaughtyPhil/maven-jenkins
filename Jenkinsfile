@@ -8,6 +8,6 @@ node {
         echo env.PATH
         echo env.M2
         def mvnHome = tool 'M3'
-        sh '/Users/phil/Java/apache-maven-3.1.1/bin/mvn -Dmaven.test.failure.ignore clean test package'
+        sh 'mvn -Dmaven.test.failure.ignore clean package'
         step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
 }
