@@ -1,5 +1,9 @@
 node {
    // Mark the code checkout 'stage'....
+   stage 'SayHi'
+
+   echo 'Hello'
+
    stage 'Checkout'
 
    git url: 'https://github.com/NaughtyPhil/maven-jenkins.git'
