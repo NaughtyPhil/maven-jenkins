@@ -1,17 +1,10 @@
 node {
-   // Mark the code checkout 'stage'....
-   stage 'SayHi'
-
-   echo 'Hello'
-
-   // Get the maven tool.
-   // ** NOTE: This 'M3' maven tool must be configured
-   // **       in the global configuration.
-   def mvnHome = tool 'M3'
-
-   // Mark the code build 'stage'....
-   stage 'Build'
-   // Run the maven build
-   sh "mvn -Dmaven.test.failure.ignore clean package"
-   step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+    stage 'checkout'
+        echo 'Hello chekcing out first ...'
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/NaughtyPhil/maven-jenkins.git']]])
+    stage 'build'
+        echo 'Beging building...'
+        def mvnHome = tool 'M3'
+        sh '/Users/phil/Java/apache-maven-3.1.1/bin/mvn -Dmaven.test.failure.ignore clean package"
+        step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
 }
