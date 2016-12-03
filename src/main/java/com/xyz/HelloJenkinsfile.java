@@ -3,7 +3,7 @@ package com.xyz;
 public class HelloJenkinsfile {
 
 	public String go(){
-		string hello = "HelloJenkinsfile";
+		String hello = "HelloJenkinsfile";
 		return hello;
 	}
 
